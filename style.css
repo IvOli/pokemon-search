@@ -1,0 +1,21 @@
+
+
+.card {
+    margin: 10px;
+    background: none;
+    border: solid black 2px;
+    background: linear-gradient(to bottom, #6aaef3, #f5f4f4);
+}
+
+.btn-sm{
+    margin: 10px;
+    width: 10rem;
+    align-self: center;
+}
+
+
+.types{
+    text-align: center;
+    background: none;
+    font-weight: 700;
+}
