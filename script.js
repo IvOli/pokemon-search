@@ -1,7 +1,8 @@
-
+let pokemon = []
 
 const createPokemon = (id, name, sprite, types, weight, moves) => {
-  let cardId = "id" + id
+  pokemon.push(name)
+  let cardId = name
   let bodyId = "body" + id
   let pokeID = "poke" + id
   let ulId = "ul" + id
@@ -64,17 +65,6 @@ const createPokemon = (id, name, sprite, types, weight, moves) => {
 
 
   //crear el elemento del modal
-  // var parrafo = document.createElement("p")
-  // parrafo.innerHTML = `#${id} - ${name.toUpperCase()}`
-  // document.getElementById("modal").appendChild(parrafo)
-
-
-
-
-
-
-
-
 
   var modal = document.createElement("div");
   modal.id = "modal" + id
@@ -91,13 +81,16 @@ const createPokemon = (id, name, sprite, types, weight, moves) => {
   
   var parrafo = document.createElement("p")
   parrafo.innerHTML = `WEIGHT - ${weight/10} kg.`
+  parrafo.className = "parrafo"
   document.getElementById(modal.id).appendChild(parrafo)
   var parrafo2 = document.createElement("p")
   parrafo2.innerHTML = `ATTACKS: `
+  parrafo2.className = "parrafo"
   document.getElementById(modal.id).appendChild(parrafo2)
   moves.map(item=>{
     var ataques = document.createElement("p")
-    ataques.innerHTML = "- " + item.move.name.toUpperCase()
+    ataques.className = "ataques"
+    ataques.innerHTML =  item.move.name.toUpperCase()
     document.getElementById(modal.id).appendChild(ataques)
 
     
@@ -151,14 +144,16 @@ const createPokemon = (id, name, sprite, types, weight, moves) => {
 }
 
 
-const poke = async (id)=> {
-  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+const poke = async (i)=> {
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`)
   const data = await response.json()
+  console.log(data)
   let name = data.name
   let sprite = data.sprites.other['official-artwork'].front_default
   let types = data.types
   let weight = parseFloat(data.weight)
   let moves = data.moves
+  let id = data.id
   createPokemon(id, name, sprite, types, weight, moves)
 
 
@@ -168,8 +163,34 @@ const poke = async (id)=> {
   // types.map(item => (console.log(item.type.name)))
 }
 for (let i =1; i<=898; i++){
+
   poke(i)
   }
 
+
+const searchPokemon = () => {
+  console.log(pokemon)
+  let pokesearched = document.getElementById("search-pokemon").value.toLowerCase()
+  console.log(pokesearched)
+  let filterpokemon = pokemon.filter((item) => item == pokesearched)
+  console.log((filterpokemon))
+  document.getElementById(filterpokemon[0]).style.animation = "mynewmove 4s 2"
+  location.hash = "#" + filterpokemon[0];
+}
+
+  // for (let i =1; i<=898; i++){
+  //   fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`)
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       let name = data.name
+  //       let sprite = data.sprites.other['official-artwork'].front_default
+  //       let types = data.types
+  //       let weight = parseFloat(data.weight)
+  //       let moves = data.moves
+  //       createPokemon(i, name, sprite, types, weight, moves)
+  //     });
+
+  
+  // }
 
   

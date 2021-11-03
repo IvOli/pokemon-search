@@ -5,6 +5,7 @@
     background: none;
     border: solid black 2px;
     background: linear-gradient(to bottom, #6aaef3, #f5f4f4);
+    /* background: linear-gradient(to bottom, #d34b4b, #2d00f5); */
     padding: 0;
 }
 
@@ -66,3 +67,46 @@
     text-decoration: none;
     cursor: pointer;
   }
+  .parrafo{
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+
+  .ataques{
+    text-align: center;
+    border: 1px solid black;
+    background: #6aaef3;
+    color: #f5f4f4;
+    font-weight: bold;
+  }
+  .pokedex{
+    margin-top: 10px;
+    text-align: center;
+  }
+  .close{
+    text-align: right;
+    
+  }
+
+  .head {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+
+  }
+  .search-pokemon{
+    width: 60%;
+    margin: 10px;
+  }
+  .search-button{
+    width: 20%;
+    margin: 10px;
+  }
+
+  @keyframes mynewmove {
+    0% { top: 0; }
+  50% { right: 20px; left: 10px; }
+  50% { top: 20px; }
+  100% { top: 0; }
+}
