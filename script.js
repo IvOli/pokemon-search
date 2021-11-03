@@ -1,4 +1,6 @@
-const createPokemon = (id, name, sprite, types) => {
+
+
+const createPokemon = (id, name, sprite, types, weight, moves) => {
   let cardId = "id" + id
   let bodyId = "body" + id
   let pokeID = "poke" + id
@@ -43,11 +45,109 @@ const createPokemon = (id, name, sprite, types) => {
     document.getElementById(ul.id).appendChild(li)
   })
   //Crear el boton de ver mas
-  // var a = document.createElement("a")
-  // a.className = "btn btn-outline-info btn-sm "
-  // a.innerHTML = "Ver más"
-  // document.getElementById(card.id).appendChild(a)
+  var a = document.createElement("button")
+  a.className = "btn btn-outline-info btn-sm "
+  a.innerHTML = "Ver más"
+  a.id = "myBtn" + id
+  document.getElementById(card.id).appendChild(a)
+  var myModal = document.createElement("div");
+  myModal.id = "myModal" + id
+  myModal.className = "modal"
+  document.getElementById(card.id).appendChild(myModal)
 
+
+
+
+
+  
+
+
+
+  //crear el elemento del modal
+  // var parrafo = document.createElement("p")
+  // parrafo.innerHTML = `#${id} - ${name.toUpperCase()}`
+  // document.getElementById("modal").appendChild(parrafo)
+
+
+
+
+
+
+
+
+
+  var modal = document.createElement("div");
+  modal.id = "modal" + id
+  modal.className = "modal-content"
+  document.getElementById(myModal.id).appendChild(modal)
+
+
+  var spanx = document.createElement("span");
+  spanx.className = "close"
+  spanx.id = "span" + id
+  spanx.innerHTML = "&times;"
+  document.getElementById(modal.id).appendChild(spanx)
+
+  
+  var parrafo = document.createElement("p")
+  parrafo.innerHTML = `WEIGHT - ${weight/10} kg.`
+  document.getElementById(modal.id).appendChild(parrafo)
+  var parrafo2 = document.createElement("p")
+  parrafo2.innerHTML = `ATTACKS: `
+  document.getElementById(modal.id).appendChild(parrafo2)
+  moves.map(item=>{
+    var ataques = document.createElement("p")
+    ataques.innerHTML = "- " + item.move.name.toUpperCase()
+    document.getElementById(modal.id).appendChild(ataques)
+
+    
+
+  } )
+
+  
+
+  // Get the button that opens the modal
+  var btnCall = document.getElementById(a.id);
+  btnCall.onclick = function() {
+    myModal.style.display = "block";
+  }
+  
+  // Get the <span> element that closes the modal
+  var spanCall = document.getElementById(spanx.id);
+  spanCall.onclick = function() {
+    myModal.style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // When the user clicks the button, open the modal 
+  // btnCall.onclick = function() {
+  //   modal.style.display = "block";
+  // }
+  
+  // When the user clicks on <span> (x), close the modal
+  
+  
+  // When the user clicks anywhere outside of the modal, close it
+  
+  
 }
 
 
@@ -57,7 +157,9 @@ const poke = async (id)=> {
   let name = data.name
   let sprite = data.sprites.other['official-artwork'].front_default
   let types = data.types
-  createPokemon(id, name, sprite, types)
+  let weight = parseFloat(data.weight)
+  let moves = data.moves
+  createPokemon(id, name, sprite, types, weight, moves)
 
 
 
