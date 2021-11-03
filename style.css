@@ -1,5 +1,6 @@
-
-
+body{
+  width: 100%;
+}
 .card {
     margin: 10px;
     background: none;
@@ -8,7 +9,6 @@
     /* background: linear-gradient(to bottom, #d34b4b, #2d00f5); */
     padding: 0;
 }
-
 .btn-sm{
     margin: 10px;
     width: 10rem;
@@ -33,7 +33,7 @@
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 2; /* Sit on top */
     padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
@@ -93,6 +93,10 @@
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    
 
   }
   .search-pokemon{
@@ -102,6 +106,8 @@
   .search-button{
     width: 20%;
     margin: 10px;
+    background: rgb(167, 167, 167);
+    color: black;
   }
 
   @keyframes mynewmove {
@@ -109,4 +115,7 @@
   50% { right: 20px; left: 10px; }
   50% { top: 20px; }
   100% { top: 0; }
+}
+.mas{
+  width: 80%;
 }

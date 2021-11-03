@@ -47,7 +47,7 @@ const createPokemon = (id, name, sprite, types, weight, moves) => {
   })
   //Crear el boton de ver mas
   var a = document.createElement("button")
-  a.className = "btn btn-outline-info btn-sm "
+  a.className = "btn btn-outline-info btn-sm mas"
   a.innerHTML = "Ver más"
   a.id = "myBtn" + id
   document.getElementById(card.id).appendChild(a)
@@ -55,14 +55,6 @@ const createPokemon = (id, name, sprite, types, weight, moves) => {
   myModal.id = "myModal" + id
   myModal.className = "modal"
   document.getElementById(card.id).appendChild(myModal)
-
-
-
-
-
-  
-
-
 
   //crear el elemento del modal
 
@@ -92,12 +84,7 @@ const createPokemon = (id, name, sprite, types, weight, moves) => {
     ataques.className = "ataques"
     ataques.innerHTML =  item.move.name.toUpperCase()
     document.getElementById(modal.id).appendChild(ataques)
-
-    
-
-  } )
-
-  
+  })
 
   // Get the button that opens the modal
   var btnCall = document.getElementById(a.id);
@@ -116,31 +103,6 @@ const createPokemon = (id, name, sprite, types, weight, moves) => {
       modal.style.display = "none";
     }
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // When the user clicks the button, open the modal 
-  // btnCall.onclick = function() {
-  //   modal.style.display = "block";
-  // }
-  
-  // When the user clicks on <span> (x), close the modal
-  
-  
-  // When the user clicks anywhere outside of the modal, close it
-  
-  
 }
 
 
@@ -155,12 +117,6 @@ const poke = async (i)=> {
   let moves = data.moves
   let id = data.id
   createPokemon(id, name, sprite, types, weight, moves)
-
-
-
-  // console.log(name)
-  // console.log(sprite)
-  // types.map(item => (console.log(item.type.name)))
 }
 for (let i =1; i<=898; i++){
 
@@ -169,11 +125,12 @@ for (let i =1; i<=898; i++){
 
 
 const searchPokemon = () => {
-  console.log(pokemon)
+  // console.log(pokemon)
   let pokesearched = document.getElementById("search-pokemon").value.toLowerCase()
-  console.log(pokesearched)
+  // console.log(pokesearched)
   let filterpokemon = pokemon.filter((item) => item == pokesearched)
-  console.log((filterpokemon))
+  filterpokemon.length == 0 ? alert(`${pokesearched} no encontrado en la base de datos Pokémon`): null;
+  // console.log((filterpokemon))
   document.getElementById(filterpokemon[0]).style.animation = "mynewmove 4s 2"
   location.hash = "#" + filterpokemon[0];
 }
