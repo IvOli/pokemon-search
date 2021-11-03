@@ -17,7 +17,6 @@ const createPokemon = (id, name, sprite, types) => {
   //crea el h5 que es el nombre
   var nodo = document.createElement("h5")
   nodo.className = "card-title"
-  nodo.style = "text-align: center"
   nodo.innerHTML = `#${id} - ${name.toUpperCase()}`
   document.getElementById(cardBody.id).appendChild(nodo)
   //crea la imagen
