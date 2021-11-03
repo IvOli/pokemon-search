@@ -92,22 +92,24 @@ body{
   .head {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
-    position: fixed;
-    bottom: 0;
+    position: sticky;
+    top: 0;
     z-index: 1;
+    width: 100vw;
+    margin-top: 10px;
+
+    
     
 
   }
   .search-pokemon{
-    width: 60%;
-    margin: 10px;
+    width: 28%;
   }
   .search-button{
-    width: 20%;
-    margin: 10px;
+    width: 15%;
     background: rgb(167, 167, 167);
     color: black;
+    margin-left: 10px;
   }
 
   @keyframes mynewmove {
@@ -119,3 +121,7 @@ body{
 .mas{
   width: 80%;
 }
+
+/* .card-content{
+  margin-top: ;
+} */
