@@ -1,8 +1,10 @@
-let pokemon = []
-
 const createPokemon = (id, name, sprite, types, weight, moves) => {
-  pokemon.push(name)
-  let cardId = name
+  // select the target element
+  const e = document.getElementById("cardId");
+
+  // remove the list item
+  e.remove()
+  let cardId = "cardId"
   let bodyId = "body" + id
   let pokeID = "poke" + id
   let ulId = "ul" + id
@@ -104,50 +106,23 @@ const createPokemon = (id, name, sprite, types, weight, moves) => {
     }
   }
 }
-
-
-const poke = async (i)=> {
-  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`)
-  const data = await response.json()
-  console.log(data)
-  let name = data.name
-  let sprite = data.sprites.other['official-artwork'].front_default
-  let types = data.types
-  let weight = parseFloat(data.weight)
-  let moves = data.moves
-  let id = data.id
-  createPokemon(id, name, sprite, types, weight, moves)
-}
-for (let i =1; i<=898; i++){
-
-  poke(i)
+  const pokemonSearch = () => {
+    // console.log(pokemon)
+    let pokesearched = document.getElementById("search-pokemon").value.toLowerCase()
+    console.log(pokesearched)
+    pokesearched.length > 0 ? poke(pokesearched): alert(`No puedes dejar vacio el campo de busqueda`);
+    
   }
 
-
-const searchPokemon = () => {
-  // console.log(pokemon)
-  let pokesearched = document.getElementById("search-pokemon").value.toLowerCase()
-  // console.log(pokesearched)
-  let filterpokemon = pokemon.filter((item) => item == pokesearched)
-  filterpokemon.length == 0 ? alert(`${pokesearched} no encontrado en la base de datos Pokémon`): null;
-  // console.log((filterpokemon))
-  document.getElementById(filterpokemon[0]).style.animation = "mynewmove 4s 2"
-  location.hash = "#" + filterpokemon[0];
-}
-
-  // for (let i =1; i<=898; i++){
-  //   fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`)
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       let name = data.name
-  //       let sprite = data.sprites.other['official-artwork'].front_default
-  //       let types = data.types
-  //       let weight = parseFloat(data.weight)
-  //       let moves = data.moves
-  //       createPokemon(i, name, sprite, types, weight, moves)
-  //     });
-
-  
-  // }
-
-  
+  const poke = async (i)=> {
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`)
+    const data = await response.json()
+    console.log(data)
+    let name = data.name
+    let sprite = data.sprites.other['official-artwork'].front_default
+    let types = data.types
+    let weight = parseFloat(data.weight)
+    let moves = data.moves
+    let id = data.id
+    createPokemon(id, name, sprite, types, weight, moves)
+  }
