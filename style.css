@@ -103,10 +103,10 @@ body{
 
   }
   .search-pokemon{
-    width: 28%;
+    width: 40%;
   }
   .search-button{
-    width: 15%;
+    width: 20%;
     background: rgb(167, 167, 167);
     color: black;
     margin-left: 10px;

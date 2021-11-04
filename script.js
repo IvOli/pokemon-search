@@ -10,7 +10,7 @@ const createPokemon = (id, name, sprite, types, weight, moves) => {
   let ulId = "ul" + id
   //crea el elemento contenedor de la tarjeta
   var card = document.createElement("div")
-  card.className = "card col-5 col-md-3  col-xl-2"
+  card.className = "card col-8 col-md-5  col-xl-3"
   // card.style ="width: 18rem;"
   card.id = cardId
   document.getElementById("card-content").appendChild(card)
