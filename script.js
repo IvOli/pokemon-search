@@ -126,3 +126,11 @@ const createPokemon = (id, name, sprite, types, weight, moves) => {
     let id = data.id
     createPokemon(id, name, sprite, types, weight, moves)
   }
+
+
+  const onload = () => {
+    let pokeRandom = Math.floor(Math.random() * 898);
+    poke(pokeRandom)
+  }
+
+  window.onload = onload
